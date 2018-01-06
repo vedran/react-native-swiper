@@ -197,6 +197,10 @@ export default class extends Component {
 
   //https://github.com/archriss/react-native-snap-carousel/blob/ea3975e48190ec79c937031f83fd5bf6594ecd9e/src/carousel/Carousel.js#L998
   triggerRenderingHack () {
+      if(this.scrollView == undefined) {
+          return;
+      }
+
       // Avoid messing with user scroll
       if (this._lastScrollDate && Date.now() - this._lastScrollDate < 500) {
           return;
@@ -206,7 +210,7 @@ export default class extends Component {
           return;
       }
 
-      this.scrollView.scrollTo({x: 0, y: 1, animated: false})
+      this.scrollView.scrollTo({x: 0, y: 1, animated: false});
   }
 
   componentWillReceiveProps (nextProps) {
