@@ -215,7 +215,9 @@ export default class extends Component {
 
   componentWillReceiveProps (nextProps) {
     if (!nextProps.autoplay && this.autoplayTimer) clearTimeout(this.autoplayTimer)
-    this.setState(this.initState(nextProps, this.props.index !== nextProps.index))
+
+    // Disable this for now to handle setting index externally
+    // this.setState(this.initState(nextProps, this.props.index !== nextProps.index))
 
     //https://github.com/archriss/react-native-snap-carousel/blob/ea3975e48190ec79c937031f83fd5bf6594ecd9e/src/carousel/Carousel.js#L998
     setTimeout(() => { this.triggerRenderingHack() }, 100);
