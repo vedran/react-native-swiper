@@ -215,7 +215,6 @@ export default class extends Component {
 
   componentWillReceiveProps (nextProps) {
     if (!nextProps.autoplay && this.autoplayTimer) clearTimeout(this.autoplayTimer)
-
     // Disable this for now to handle setting index externally
     // this.setState(this.initState(nextProps, this.props.index !== nextProps.index))
 
@@ -281,7 +280,6 @@ export default class extends Component {
     initState.offset[initState.dir] = initState.dir === 'y'
       ? height * props.index
       : width * props.index
-
 
     this.internals = {
       ...this.internals,
@@ -669,6 +667,9 @@ export default class extends Component {
                            initialPage={this.props.loop ? this.state.index + 1 : this.state.index}
                            onPageSelected={this.onScrollEnd}
                            key={pages.length}
+                           onScrollBeginDrag={this.onScrollBegin}
+                           onMomentumScrollEnd={this.onScrollEnd}
+                           onScrollEndDrag={this.onScrollEndDrag}
                            style={StyleSheet.flatten([styles.wrapperAndroid, this.props.style])}>
               {pages}
             </VertViewPager>
